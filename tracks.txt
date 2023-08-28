@@ -1,5 +1,5 @@
-K-POP
-TELEKENESIS
-FAMOUS
-Circo Loco
-Passion Fruit
+K-POP,Travis Scott,UTOPIA,3:05,Hip-Hop/Rap,2023, 
+TELEKENESIS,Travis Scott,UTOPIA,5:54,Hip-Hop/Rap,2023, 
+FAMOUS,French Montana ,Jungle Rules,3:05,Hip-Hop/Rap,2017,
+Circo Loco,Drake,Her Loss,3:57,Hip-Hop/Rap,2022, 
+Passion Fruit,Drake,More Life,4:59,Hip-Hop/Rap,2015, 
