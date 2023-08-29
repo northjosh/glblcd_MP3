@@ -71,14 +71,17 @@ class Playlist:
     def remove_track(self, pos):
         self.playlist.pop(pos-1)
     
-    def save_playlist(self):
-        try:
-            new = open('new_playlist', 'x')
-        except FileExistsError:
-            new = open('new_playlist'+ '2' , 'x')
+    def save_playlist(self, filename):
         
-        for track in self.playlist:
-            new.write(f"{track.title}, {track.artiste} {track.album} {track.duration} {track.genre}, {track.year} n")
+        try:
+            new = open(filename + ".txt", 'x')
+        except FileExistsError:
+            print("Playlist already exists, choose another name")
+        
+        else:
+            for track in self.playlist:
+                new.write(f"{track.title}, {track.artiste} {track.album} {track.duration} {track.genre}, {track.year}, \n")
+            new.close()
             
     
     def shuffle_playlist(self):
@@ -126,6 +129,7 @@ print(play.is_empty())
 
 play.show_tracks()
 play.count_tracks()
+play.save_playlist("north")
 play.reset()
 
 print(play.is_empty())
