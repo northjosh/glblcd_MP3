@@ -1,6 +1,10 @@
 from random import shuffle
-from random import random
-from functools import reduce
+
+#  add tracks to queue
+#  displaying tracks froma file
+#  load tracks form text file
+
+# Track Class
 
 class Track:
     def __init__(self, title, artiste, album, duration, genre, year):
@@ -11,51 +15,22 @@ class Track:
         self.genre = genre
         self.year = year
         
-
-def load_tracks(path):
     
-    f = open(path, 'r')
-    t_list = []
-    
-    for track in f.readlines():
-        deets = track.split(",")
-
-        t_list.append(Track(deets[0],deets[1], deets[2], deets[3], deets[4],deets[5]))
-        
-    return t_list
-        
-# t_list = load_tracks('./tracks.txt')
-# print(t_list[2].duration)
-
-    
+# Playlist Class
 
 class Playlist:
-#   add tracks to queue
-#  displaying tracks froma file
-#  load tracks form text file
 
     def __init__(self):
         self.playlist = []
-        
-#     def load_tracks(self,path):
-#     
-#         f = open(path, 'r')
-#     
-#         
-#         for track in f.readlines():
-#             deets = track.split(",")
-#             t_list.append(Track(deets[0],deets[1], deets[1], deets[2], deets[3],deets[4],deets[5]))
-#         
-#             return t_list
     
-
-        
-#     def __filename(self):
-        
-        
-
+#   
     def load(self, path):
-        self.playlist = load_tracks(path)
+        f = open(path, 'r')
+        t_list = []
+        for track in f.readlines():
+            deets = track.split(",")
+
+            self.playlist.append(Track(deets[0],deets[1], deets[2], deets[3], deets[4],deets[5]))
     
     
     def show_tracks(self):
@@ -64,9 +39,12 @@ class Playlist:
             print(f"{num + 1}. {track.title}")
         
     
-    def add_track(self, title, artiste, album, duration, genre, year):
+    def add_track(self, title="", artiste="", album="", duration="", genre="", year=""):
         
-        self.playlist.append(Track(title, artiste, album, duration, genre, year))
+        if not title:
+            print("Please add a title")
+        else:
+            self.playlist.append(Track(title, artiste, album, duration, genre, year))
     
     def remove_track(self, pos):
         self.playlist.pop(pos-1)
@@ -107,29 +85,21 @@ class Playlist:
     def is_empty(self):
         
         return "Playlist is empty" if len(self.playlist) == 0 else "Playlist is not empty"
-    
+
+
+
 play = Playlist()
-
 play.load("./tracks.txt")
-
 play.show_tracks()
-
-
-
-# play.add_track("Bohemian Rhapsody")
-
 play.show_tracks()
-
 play.remove_track(4)
-
 play.show_tracks()
 play.total_duration()
 play.shuffle_playlist()
 print(play.is_empty())
-
+play.add_track()
 play.show_tracks()
 play.count_tracks()
 play.save_playlist("north")
 play.reset()
-
 print(play.is_empty())
