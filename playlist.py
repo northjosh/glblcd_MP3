@@ -87,7 +87,6 @@ class Playlist:
         return "Playlist is empty" if len(self.playlist) == 0 else "Playlist is not empty"
 
 
-
 play = Playlist()
 play.load("./tracks.txt")
 play.show_tracks()
